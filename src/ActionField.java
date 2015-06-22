@@ -1,4 +1,3 @@
-package day4.tanks;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +10,8 @@ public class ActionField extends JPanel {
     private Bullet bullet;
 
     void runTheGame() throws Exception {
-        tank.clean();
-//        tank.moveToQuadrant(1, 9);
+       tank.clean();
+      // tank.moveToQuadrant(1, 9);
 //        tank.fire();
 //        tank.move();
 //        tank.turn(3);
@@ -20,11 +19,11 @@ public class ActionField extends JPanel {
 //        tank.move();
     }
 
-    public void processTurn(Tank tank) throws Exception{
+    public void processTurn(Tank tank) throws Exception {
         repaint();
     }
 
-    public void processMove(Tank tank) throws Exception{
+    public void processMove(Tank tank) throws Exception {
         this.tank = tank;
         int direction = tank.getDirection();
         int step = 1;
@@ -42,11 +41,14 @@ public class ActionField extends JPanel {
         while (covered < 64) {
             if (direction == 1) {
                 tank.updateY(-step);
+//                tank.posY--;
                 System.out.println("[move up] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
             } else if (direction == 2) {
                 tank.updateY(step);
+//                tank.posY++;
                 System.out.println("[move down] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
             } else if (direction == 3) {
+//                tank.posX--;
                 tank.updateX(-step);
                 System.out.println("[move left] direction: " + direction + " tankX: " + tank.getX() + ", tankY: " + tank.getY());
             } else {
@@ -60,10 +62,10 @@ public class ActionField extends JPanel {
         }
     }
 
-    public void processFire(Bullet bullet) throws Exception{
+    public void processFire(Bullet bullet) throws Exception {
         this.bullet = bullet;
         int step = 1;
-        while ((bullet.getX() > - 14 && bullet.getX() < 590) && (bullet.getY() > -14 && bullet.getY() < 590)) {
+        while ((bullet.getX() > -14 && bullet.getX() < 590) && (bullet.getY() > -14 && bullet.getY() < 590)) {
             if (tank.getDirection() == 1) {
                 bullet.updateY(-step);
             } else if (tank.getDirection() == 2) {
@@ -89,7 +91,7 @@ public class ActionField extends JPanel {
         int x = Integer.parseInt(coordinates.split("_")[1]);
 
         if (y >= 0 && y < 9 && x >= 0 && x < 9) {
-            if (!battleField.scanQuadrant(y,x).trim().isEmpty()) {
+            if (!battleField.scanQuadrant(y, x).trim().isEmpty()) {
                 battleField.updateQuadrant(y, x, "");
                 return true;
             }
@@ -107,7 +109,7 @@ public class ActionField extends JPanel {
     }
 
 
-    public ActionField() throws Exception{
+    public ActionField() throws Exception {
         battleField = new BattleField();
         tank = new Tank(this, battleField);
         bullet = new Bullet(-100, -100, -1);

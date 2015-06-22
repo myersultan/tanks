@@ -1,5 +1,3 @@
-package day4.tanks;
-
 public class BattleField {
 
     private int bfWidth = 576;
@@ -17,26 +15,26 @@ public class BattleField {
             {"B", " ", " ", "B", "B", "B", " ", " ", "B"}
     };
 
-    public BattleField(){
+    public BattleField() {
     }
 
-    public BattleField(String[][] battleField){
+    public BattleField(String[][] battleField) {
         this.battleField = battleField;
     }
 
-    public void updateQuadrant(int v, int h, String object){
+    public void updateQuadrant(int v, int h, String object) {
         battleField[v][h] = object;
     }
 
-    public String scanQuadrant(int v, int h){
+    public String scanQuadrant(int v, int h) {
         return battleField[v][h];
     }
 
-    public int getDimensionX(){
+    public int getDimensionX() {
         return battleField.length;
     }
 
-    public int getDimensionY(){
+    public int getDimensionY() {
         return battleField.length;
     }
 
